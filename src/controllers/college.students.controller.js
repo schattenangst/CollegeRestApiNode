@@ -34,8 +34,6 @@ export const getStudents = async (req, res) => {
     }
 }
 
-
-
 /**
  * Crea un nuevo registro de estudiantes
  * 
@@ -44,14 +42,14 @@ export const getStudents = async (req, res) => {
  */
 export const createStudent = async (req, res) => {
     try {
-        const { idGroup, name, surname, age, brithday, tutor } = req.body
+        const { idGroup, name, surname, age, birthday, tutor } = req.body
 
         const newStudent = await Student.create({
             idGroup,
             name,
             surname,
             age,
-            brithday,
+            birthday,
             tutor
         })
 
@@ -72,7 +70,7 @@ export const createStudent = async (req, res) => {
 export const updateStudent = async (req, res) => {
 
     const { id } = req.params;
-    const { idGroup, name, surname, age, brithday, tutor } = req.body;
+    const { idGroup, name, surname, age, birthday, tutor } = req.body;
 
     try {
         const student = await Student.findByPk(id)
@@ -82,7 +80,7 @@ export const updateStudent = async (req, res) => {
         student.name = name
         student.surname = surname
         student.age = age
-        student.brithday = brithday
+        student.birthday = birthday
         student.tutor = tutor
 
         await student.save()
